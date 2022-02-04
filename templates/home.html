@@ -1,14 +1,120 @@
-{% extends 'layout.html' %}
-
-{% block title %}Home{% endblock %}
-
-{% block content %}
-<h2>Home Page</h2>
-{% for x in property %}
-<p>{{ x['name'] }}</p>
-<form method="post" action="{{ url_for('view') }}">
-    <input type="hidden" name="id" value= "{{ x['id'] }}" >
-    <button type="submit">View Property</button>
-</form>
-{% endfor %}
-{% endblock %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+		<!--title>{% block title %}{% endblock %}</title-->
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<style>
+			body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+		</style>
+	</head>
+	<body class="loggedin">
+		<nav class="navtop">
+			<div>
+				<h1>R.E.M. Residential</h1>
+                <!--a href="{{ url_for('home') }}"><i class="fas fa-home"></i>Home</a-->
+				<a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+			</div>
+		</nav>
+		
+		<div class="w3-light-grey"> <!--class="content"-->
+			<h2>Properties</h2>
+			{% for x in property %}
+			<div class="w3-content" style="max-width:1532px;">
+				<div class="w3-row-padding w3-padding-16">
+				  <div class="w3-third w3-margin-bottom">
+					<img src="/static/deccan_fields.jpg" alt="Deccan Fields" style="width:100%">
+					<div class="w3-container w3-white">
+					  <h3>Deccan Fields</h3>
+					  <h6 class="w3-opacity">Rs.25k</h6>
+					  <p>3BHK</p>
+					  <p>1200 sqft</p>
+					  <p class="w3-large"><i class="fa fa-car"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
+					  <form method="post" action="{{ url_for('view') }}">
+						<input type="hidden" name="id" value= "{{ x['id'] }}" >
+						<button class="w3-button w3-block w3-black w3-margin-bottom">View Property</button>
+					  </form>
+					</div>
+				  </div>
+				  <div class="w3-third w3-margin-bottom">
+					<img src="/static/shobha_aquamarine.jpeg" alt="Shobha Aquamarine" style="width:100%">
+					<div class="w3-container w3-white">
+					  <h3>Shobha Aquamarine</h3>
+					  <h6 class="w3-opacity">Rs.33k</h6>
+					  <p>3BHK</p>
+					  <p>1335 sqft</p>
+					  <p class="w3-large"><i class="fa fa-car"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></i></p>
+					  <form method="post" action="{{ url_for('view') }}">
+						<input type="hidden" name="id" value= "{{ x['id'] }}" >
+						<button class="w3-button w3-block w3-black w3-margin-bottom">View Property</button>
+					  </form>
+					</div>
+				  </div>
+				  <div class="w3-third w3-margin-bottom">
+					<img src="/static/lakeshore_homes.jpeg" alt="Lakeshore Homes" style="width:100%">
+					<div class="w3-container w3-white" id="img1">
+					  <h3>Lakeshore Homes</h3>
+					  <h6 class="w3-opacity">Rs.15k</h6>
+					  <p>2BHK</p>
+					  <p>850 sqft</p>
+					  <p class="w3-large"><i class="fa fa-car"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
+					  <button class="w3-button w3-block w3-black w3-margin-bottom">View Property</button>
+					</div>
+				  </div>
+				  <div class="w3-third w3-margin-bottom">
+					<img src="/static/sunrise_eka.jpeg" alt="Norway" style="width:100%">
+					<div class="w3-container w3-white">
+					  <h3>Sunrise EKA</h3>
+					  <h6 class="w3-opacity">Rs.59 lac</h6>
+					  <p>Plot</p>
+					  <p>2400 sqft</sup></p>
+					  <p class="w3-large"><i class="fa fa-car"></i></p>
+					  <form method="post" action="{{ url_for('view') }}">
+						<input type="hidden" name="id" value= "{{ x['id'] }}" >
+						<button class="w3-button w3-block w3-black w3-margin-bottom">View Property</button>
+					  </form>
+					</div>
+				  </div>
+				  <div class="w3-third w3-margin-bottom">
+					<img src="/static/sjr_apartments.jpeg" alt="Norway" style="width:100%">
+					<div class="w3-container w3-white">
+					  <h3>SJR Apartments</h3>
+					  <h6 class="w3-opacity">Rs.22k</h6>
+					  <p>2BHK</p>
+					  <p>1050 sqft</sup></p>
+					  <p class="w3-large"><i class="fa fa-car"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
+					  <form method="post" action="{{ url_for('view') }}">
+						<input type="hidden" name="id" value= "{{ x['id'] }}" >
+						<button class="w3-button w3-block w3-black w3-margin-bottom">View Property</button>
+					  </form>
+					</div>
+				  </div>
+				  <div class="w3-third w3-margin-bottom">
+					<img src="/static/shanti_nivas.jpeg" alt="Shanti Nivas" style="width:100%">
+					<div class="w3-container w3-white">
+					  <h3>Shanti Nivas</h3>
+					  <h6 class="w3-opacity">Rs.35000</h6>
+					  <p>4BHK</p>
+					  <p>2200sqft</p>
+					  <p class="w3-large"><i class="fa fa-car"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
+					  <form method="post" action="{{ url_for('view') }}">
+						<input type="hidden" name="id" value= "{{ x['id'] }}" >
+						<button class="w3-button w3-block w3-black w3-margin-bottom">View Property</button>
+					  </form>
+					</div>
+				  </div>
+				</div>
+			</div>
+		{% endfor %}
+            <!--{% for x in property %}
+            <p>{{ x['name'] }}</p>
+            <form method="post" action="{{ url_for('view') }}">
+                <input type="hidden" name="id" value= "{{ x['id'] }}" >
+                <button type="submit">View Property</button>
+            </form>
+            {% endfor %}-->
+		</div>
+	</body>
+</html>
