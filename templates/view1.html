@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<title>Deccan Fields</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+.mySlides {display: none}
+</style>
+<body class="w3-content w3-border-left w3-border-right">
+  <!-- Slideshow Header -->
+  <div class="w3-container" id="apartment">
+    <h2 class="w3-text-green">The Apartment</h2>
+    <div class="w3-display-container mySlides">
+    <img src="C:\Users\Smriti\property_management\static\deccan1.jpg" style="width:100%;margin-bottom:-6px">
+    </div>
+    <div class="w3-display-container mySlides">
+    <img src="C:\Users\Smriti\property_management\static\deccan2.jpg" style="width:100%;margin-bottom:-6px">
+    </div>
+    <div class="w3-display-container mySlides">
+    <img src="C:\Users\Smriti\property_management\static\deccan3.jpg" style="width:100%;margin-bottom:-6px">
+    </div>
+    <div class="w3-display-container mySlides">
+    <img src="C:\Users\Smriti\property_management\static\deccan4.jpg" style="width:100%;margin-bottom:-6px">
+    </div>
+  </div>
+  <div class="w3-row-padding w3-section">
+    <div class="w3-col s3">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="C:\Users\Smriti\property_management\static\deccan1.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(1)" title="Living room">
+    </div>
+    <div class="w3-col s3">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="C:\Users\Smriti\property_management\static\deccan2.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(2)" title="Dining room">
+    </div>
+    <div class="w3-col s3">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="C:\Users\Smriti\property_management\static\deccan3.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(3)" title="Bedroom">
+    </div>
+    <div class="w3-col s3">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="C:\Users\Smriti\property_management\static\deccan4.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(4)" title="Second Living Room">
+    </div>
+  </div>
+
+  <div class="w3-container">
+    <h4><strong>The space</strong></h4>
+    <div class="w3-row w3-large">
+      <div class="w3-col s6">
+        <p><i class="fa fa-fw fa-male"></i> Max people: 7</p>
+        <p><i class="fa fa-fw fa-bath"></i> Bathrooms: 2</p>
+        <p><i class="fa fa-fw fa-bed"></i> Bedrooms: 3</p>
+      </div>
+    </div>
+    <hr>
+    
+    <h4><strong>Amenities</strong></h4>
+    <div class="w3-row w3-large">
+      <div class="w3-col s6">
+        <p><i class="fa fa-fw fa-shower"></i> Shower</p>
+        <p><i class="fa fa-fw fa-wifi"></i> WiFi</p>
+        <p><i class="fa fa-fw fa-tv"></i> TV</p>
+      </div>
+      <div class="w3-col s6">
+        <p><i class="fa fa-fw fa-cutlery"></i> Kitchen</p>
+        <p><i class="fa fa-fw fa-thermometer"></i> Heating</p>
+        <p><i class="fa fa-fw fa-wheelchair"></i> Accessible</p>
+      </div>
+    </div>
+    <hr>
+    
+    <h4><strong>Description</strong></h4>
+    <p>This spacious 3 BHK flat of 1200 sq. ft on rent in ITPL main road is ideal for families & bachelors. This semi-furnished apartment is at a great price of just 25,000 rupees. This with 3 wardrobes & also has 2 bathrooms. You get ample & dedicated space for car and bike parking with this home. This home faces the North direction. With amenities such as an intercom facility, security, lift & internet this home offers you a lot of conveniences.</p>
+    <p>We accept: <i class="fa fa-credit-card w3-large"></i> <i class="fa fa-cc-mastercard w3-large"></i> <i class="fa fa-cc-amex w3-large"></i> <i class="fa fa-cc-cc-visa w3-large"></i><i class="fa fa-cc-paypal w3-large"></i></p>
+    <hr>
+    
+    <h4><strong>Price: 25000</strong></h4>
+    <h4><strong>Type: Flat</strong></h4>
+    <h4><strong>Staus: Available</strong></h4>
+    <form action="{{ url_for('register') }}" id="ft-form" method="POST">
+    <fieldset>
+      <legend>Appointment request</legend>
+      <div class="two-cols">
+        <label>
+          Date
+          <input type="date" name="Appointment request" required>
+        </label>
+      </div>
+    </fieldset>
+    <div class="btns">
+      <input type="text" name="_gotcha" value="" style="display:none;">
+      <input type="submit" value="Submit request">
+    </div>
+  </form>
+  <hr>
+  
+  <script>
+// Script to open and close sidebar when on tablets and phones
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Slideshow Apartment Images
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+  }
+  x[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " w3-opacity-off";
+}
+</script>
+
+  
+</body>
+</html>
