@@ -33,7 +33,7 @@ def login():
             session['loggedin'] = True
             session['id'] = account['id']
             session['username'] = account['username']
-            return render_template('home.html',username=username)
+            return redirect(url_for('home'))
         else:
             msg = 'Incorrect username/password!'
     return render_template('login.html', msg=msg)
@@ -97,7 +97,7 @@ def book():
     date=request.form['date']
     client_id=session['id']
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cursor.execute('INSERT INTO appointment VALUES (null,%s)', (date)) #(null,%s,%s,%s)(property_id,date,client_id)
+    cursor.execute('INSERT INTO appointment VALUES (null,%s,%s,%s)', (property_id,date,client_id)) #(null,%s,%s,%s)(property_id,date,client_id)
     return redirect( {{ url_for('home')}} )
 
 @app.route('/')
