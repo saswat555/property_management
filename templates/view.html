@@ -4,21 +4,20 @@
 
 {% block content %}
 <h1>Book appointment</h1>
-<p>{{ data }}</p>
 <p>You can book your appointment by selecting a date and time from below.</p>
-<form action="{{ url_for('register') }}" id="ft-form" method="POST">
-    <fieldset>
-      <legend>Appointment request</legend>
-      <div class="two-cols">
-        <label>
-          Date
-          <input type="date" name="Appointment request" required>
-        </label>
-      </div>
-    </fieldset>
-    <div class="btns">
-      <input type="text" name="_gotcha" value="" style="display:none;">
-      <input type="submit" value="Submit request">
+<form action="{{ url_for('book') }}" id="ft-form" method="post">
+  <fieldset>
+    <legend>Appointment request</legend>
+    <div class="two-cols">
+      <label>
+        Date
+        <input type="date" name="date">
+      </label>
+      <input type="hidden" name="id" value="{{ data['id'] }}">
     </div>
-  </form>
+  </fieldset>
+  <div class="btns">
+    <input type="submit" value="Submit request">
+  </div>
+</form>
 {% endblock %}

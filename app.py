@@ -86,19 +86,23 @@ def home():
 @app.route('/view', methods=['GET', 'POST'])
 def view():
     property_id=request.form['id']
+    session['property_id']= property_id
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute('SELECT * FROM property WHERE id=%s', (property_id))
     data = cursor.fetchone()
-    print(data)
     return render_template('view.html',data=data)
-@app.route('/book')
+@app.route('/book', methods=['GET', 'POST'])
 def book():
-    property_id=request.form['property_id']
+    property_id=request.form['id']
     date=request.form['date']
     client_id=session['id']
+    print(client_id)
+    print(date)
+    print(property_id)
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cursor.execute('INSERT INTO appointment VALUES (null,%s,%s,%s)', (property_id,date,client_id)) #(null,%s,%s,%s)(property_id,date,client_id)
-    return redirect( {{ url_for('home')}} )
+    cursor.execute('INSERT INTO appointment VALUES (null,%s,%s,%s)', (property_id,date,client_id))
+    mysql.connection.commit()
+    return redirect( url_for('home'))
 
 @app.route('/')
 def first():
@@ -106,12 +110,8 @@ def first():
         return redirect('/home')
     else:
         return redirect('/login')
-
-    
-
-
-
-    
+ 
+   
 
 if __name__ == '__main__':
    app.run()
